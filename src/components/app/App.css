@@ -1,0 +1,233 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: #25316d;
+  font-family: 'Inter', sans-serif;
+  font-size: 4rem;
+  text-align: center;
+  margin-block-start: 6rem;
+  margin-block-end: 4rem;
+}
+
+h2 {
+  color: #25316d;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+}
+
+h3 {
+  color: #25316d;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h4 {
+  color: #25316d;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+p {
+  color: #25316d;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.content-container {
+  margin: 50px auto;
+  max-width: 94%;
+  width: 60%;
+}
+
+.team-select {
+  max-width: 100%;
+  padding: 20px;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 2rem;
+  border-radius: 18px;
+  border: solid 3px black;
+  cursor: pointer;
+}
+
+.main-game {
+  margin: 60px auto;
+  padding: 30px;
+  max-width: 100%;
+  position: relative;
+  background-color: #97d2ec;
+  border-radius: 10px;
+  box-shadow: 5px 5px 4px #78a8bc;
+}
+
+.next-game-label {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  position: absolute;
+  top: -20px;
+  left: 40px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 100%;
+}
+
+.game-item-first {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.game-item-second {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+.lg-team-abbreviation {
+  color: #5f6f94;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+}
+
+.small-game-card {
+  background-color: #fef5ac;
+  width: 17%;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px #b1ab78;
+}
+
+p.main-datetime {
+  color: #5f6f94;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-block-start: 0.6rem;
+  margin-block-end: 0;
+}
+
+p.datetime {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #5f6f94;
+}
+
+.many-games-container {
+  margin: 60px auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    color: #25316d;
+    font-family: 'Audiowide', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  h4 {
+    color: #25316d;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  p {
+    color: #25316d;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .content-container {
+    width: 94%;
+  }
+
+  .team-select {
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 1.4rem;
+  }
+
+  .main-game {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px #78a8bc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .next-game-label {
+    position: relative;
+    left: 0;
+    top: -35px;
+  }
+
+  /* .game-container {
+    display: grid;
+    width: 100%;
+  } */
+
+  /* .game-item-first {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .game-item-second {
+    grid-column-start: 3;
+    grid-column-end: 5;
+  } */
+
+  .lg-team-abbreviation {
+    font-size: 3.6rem;
+  }
+
+  .small-game-card {
+    width: 100%;
+  }
+
+  p.datetime {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: #5f6f94;
+  }
+
+  /* .many-games-container {
+    margin: 60px auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  } */
+}
