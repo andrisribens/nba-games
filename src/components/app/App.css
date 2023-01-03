@@ -21,7 +21,7 @@ h2 {
 h3 {
   color: #25316d;
   font-family: 'Audiowide', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -30,7 +30,7 @@ h3 {
 h4 {
   color: #25316d;
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -46,11 +46,12 @@ p {
 .content-container {
   margin: 50px auto;
   max-width: 94%;
-  width: 900px;
+  width: 910px;
 }
 
 .team-select {
-  max-width: 100%;
+  max-width: 96%;
+  min-width: 500px;
   padding: 20px;
   font-family: 'Audiowide', sans-serif;
   font-size: 2rem;
@@ -107,7 +108,7 @@ p {
 
 .small-game-card {
   background-color: #fef5ac;
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px #b1ab78;
   flex: 1 1 120px;
@@ -144,48 +145,18 @@ p.datetime {
     font-size: 1.8rem;
   }
 
-  h3 {
-    color: #25316d;
-    font-family: 'Audiowide', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-block-start: 0;
-    margin-block-end: 0;
-  }
-
-  h4 {
-    color: #25316d;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-block-start: 0;
-    margin-block-end: 0;
-  }
-
-  p {
-    color: #25316d;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-  }
-
   .content-container {
     width: 94%;
   }
 
-  /* .team-select {
-    width: 100%;
+  .team-select {
     padding: 20px 10px;
     font-size: 1.4rem;
-  } */
+  }
 
   .main-game {
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 3px 3px 3px #78a8bc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .lg-team-abbreviation {
@@ -194,20 +165,11 @@ p.datetime {
 
   p.main-datetime {
     font-size: 1.3rem;
-    /* font-weight: 800; */
   }
 
   .small-game-card {
     flex: 0 1 150px;
   }
-
-  /* .many-games-container {
-    margin: 60px auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  } */
 }
 
 @media (max-width: 600px) {
@@ -220,47 +182,21 @@ p.datetime {
   }
 
   h3 {
-    color: #25316d;
-    font-family: 'Audiowide', sans-serif;
     font-size: 1.4rem;
-    font-weight: 600;
-    margin-block-start: 0;
-    margin-block-end: 0;
   }
 
   h4 {
-    color: #25316d;
-    font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    font-weight: 400;
-    margin-block-start: 0;
-    margin-block-end: 0;
-  }
-
-  p {
-    color: #25316d;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-  }
-
-  .content-container {
-    width: 94%;
   }
 
   .team-select {
-    width: 100%;
-    padding: 20px 10px;
+    min-width: 100%;
     font-size: 1.4rem;
   }
 
   .main-game {
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 3px 3px 3px #78a8bc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .next-game-label {
@@ -269,40 +205,12 @@ p.datetime {
     top: -35px;
   }
 
-  /* .game-container {
-    display: grid;
-    width: 100%;
-  } */
-
-  /* .game-item-first {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-
-  .game-item-second {
-    grid-column-start: 3;
-    grid-column-end: 5;
-  } */
-
   .lg-team-abbreviation {
     font-size: 3.6rem;
   }
 
   .small-game-card {
     width: 100%;
+    flex: 1 1 100%;
   }
-
-  p.datetime {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    color: #5f6f94;
-  }
-
-  /* .many-games-container {
-    margin: 60px auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  } */
 }
