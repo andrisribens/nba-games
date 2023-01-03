@@ -176,8 +176,6 @@ const App: React.FC = () => {
             </div>
             <p className="main-datetime">{firstGameDate}</p>
             <p className="main-datetime">{firstGame.status}</p>
-
-            <h2></h2>
           </div>
         </>
       );
@@ -203,37 +201,17 @@ const App: React.FC = () => {
     });
   };
 
-  // const fetchGameData = (newActiveTeam: TeamObject) => {
-  //   return axios
-  //     .get(
-  //       'https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=' +
-  //         newActiveTeam.id +
-  //         '&start_date=' +
-  //         currentDateString
-  //     )
-  //     .then(function (response) {
-  //       const games: JSONObject[] = response.data.data;
-  //       const moreData = response.data;
-  //       console.log(moreData);
-  //       return games;
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   fetchTeamData().then((fetchedTeamData) => {
-  //     setTeams(fetchedTeamData || []);
-  //   });
-  // }, []);
-
   return (
     <div className="App">
       <div className="content-container">
         {activeTeam.id === 0 ? <h1>Never miss an NBA game!</h1> : null}
         <SelectTeam />
-        {gamesAreVisible ? <MainGame /> : null}
+        {gamesAreVisible ? (
+          <>
+            <MainGame />
+            <p className="next5-label">and next 5 games...</p>
+          </>
+        ) : null}
         {gamesAreVisible ? (
           <div className="many-games-container">
             <ManyGames />
