@@ -1,10 +1,13 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import axios from 'axios';
+import { inject } from '@vercel/analytics/*';
 
 import './App.css';
 
 const App: React.FC = () => {
   // type JSONValue = string | number | boolean | JSONObject | JSONArray;
+
+  inject();
 
   interface Team {
     id: number;
