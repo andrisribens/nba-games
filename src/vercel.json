@@ -1,6 +1,5 @@
 {
   "rewrites": [
-  
     {
       "source": "/sample-page/:asset*",
       "destination": "https://sample-responsive-webpage.vercel.app/:asset*"
@@ -8,6 +7,3 @@
     { "source": "/(.*)", "destination": "/" }
   ]
 }
-
-
-https://sample-responsive-webpage.vercel.app/
