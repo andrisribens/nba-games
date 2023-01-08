@@ -3,7 +3,6 @@
     {
       "source": "/next-nba-games/:asset*",
       "destination": "https://nba-games-pi.vercel.app/:asset*"
-    },
-    { "source": "/(.*)", "destination": "/" }
+    }
   ]
 }
