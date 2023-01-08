@@ -1,9 +1,6 @@
 {
   "rewrites": [
-    {
-      "source": "/next-nba-games/:asset*",
-      "destination": "https://nba-games-pi.vercel.app/:asset*"
-    },
+  
     {
       "source": "/sample-page/:asset*",
       "destination": "https://sample-responsive-webpage.vercel.app/:asset*"
@@ -11,3 +8,6 @@
     { "source": "/(.*)", "destination": "/" }
   ]
 }
+
+
+https://sample-responsive-webpage.vercel.app/
