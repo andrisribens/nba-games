@@ -45,10 +45,9 @@ const App: React.FC = () => {
 
   const fetchTeamData = () => {
     return axios
-      .get('https://www.balldontlie.io/api/v1/teams')
+      .get('https://www.balldontlie.io/api/v1/teams') 
       .then(function (response) {
         const teams: TeamObject[] = response.data.data;
-        console.log(teams);
         return teams;
       })
       .catch(function (error) {
@@ -59,7 +58,7 @@ const App: React.FC = () => {
   const fetchGameData = (newActiveTeam: TeamObject) => {
     return axios
       .get(
-        'https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=' +
+        'https://www.balldontlie.io/api/v1/games?seasons[]=2023&team_ids[]=' +
           newActiveTeam.id +
           '&start_date=' +
           currentDateString
@@ -99,8 +98,6 @@ const App: React.FC = () => {
   const currentDateString: String =
     currentYear + '-' + currentMonth + '-' + currentDayOfMonth;
 
-  console.log('currentDateString: ' + currentDateString);
-
   const [gamesAreVisible, setGamesAreVisible] = useState<boolean>(false);
   const [games, setGames] = useState<JSONObject[]>([]);
 
@@ -134,6 +131,8 @@ const App: React.FC = () => {
       teams.find((team) => team.abbreviation === event.target.value) ||
       activeTeam;
     setActiveTeam(newActiveTeam);
+    console.log(newActiveTeam);
+
 
     fetchGameData(newActiveTeam).then((fetchedData) => {
       setGames(fetchedData || []);
@@ -144,7 +143,19 @@ const App: React.FC = () => {
   const sortedGames: JSONObject[] = games.sort((a: JSONObject, b: JSONObject) =>
     a.date.localeCompare(b.date)
   );
-  console.log(sortedGames);
+
+  const handleGameDateAndTime: Function = (timeStamp: string) => {
+    //Detect user's timezone
+    const userTimeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    
+    //Convert UTC timestamp to user's local date and time
+    const utcDate: Date = new Date(timeStamp);
+    const timeOptions: Intl.DateTimeFormatOptions = {timeZone: userTimeZone, weekday: "long",  hour: "numeric",  minute: "numeric"};
+    const dateOptions: Intl.DateTimeFormatOptions = {timeZone: userTimeZone, year: "numeric", month: "short", day: "numeric",};
+    const localDayAndTime: string = new Intl.DateTimeFormat("en-GB", timeOptions).format(utcDate);
+    const localDate: string = new Intl.DateTimeFormat("en-GB", dateOptions).format(utcDate);
+    return [ localDayAndTime, localDate ]
+  }
 
   const MainGame: Function = () => {
     const firstGame = sortedGames.find((oneGame: JSONObject, idx: number) => {
@@ -154,29 +165,34 @@ const App: React.FC = () => {
       console.log('No first game data found');
       return null;
     } else {
-      const firstGameTime: Date = new Date(firstGame.date);
-      const firstGameDate: string = firstGameTime.toDateString();
+
+      const utcTimeStamp: string = firstGame.status;
+      const [localDayAndTime, localDate] = handleGameDateAndTime(utcTimeStamp)
+
+      const started: number = firstGame.period;
+
       return (
         <>
           <div className="main-game">
             <div className="next-game-label">Next game</div>
             <div className="game-container">
               <div className="game-item-first">
-                <a className="lg-team-abbreviation">
+                <p className="lg-team-abbreviation">
                   {firstGame.home_team.abbreviation}
-                </a>
+                </p>
                 <h2>{firstGame.home_team.full_name}</h2>
               </div>
               <div className="game-item-second">
-                <a className="lg-team-abbreviation">
+                <p className="lg-team-abbreviation">
                   {firstGame.visitor_team.abbreviation}
-                </a>
+                </p>
 
                 <h2>{firstGame.visitor_team.full_name}</h2>
               </div>
             </div>
-            <p className="main-datetime">{firstGameDate}</p>
-            <p className="main-datetime">{firstGame.status}</p>
+            <p className="main-datetime">{started !== 0 ? "The game has started" : localDayAndTime}</p>
+            <p className="main-datetime">{started !== 0 ? "The game has started" : localDate}</p>
+
           </div>
         </>
       );
@@ -184,19 +200,20 @@ const App: React.FC = () => {
   };
 
   const ManyGames: Function = () => {
-    return sortedGames.slice(1, 6).map((oneGame: JSONObject, idx: number) => {
-      const realGameTime: Date = new Date(oneGame.date);
+   
+    return  sortedGames.slice(1, 6).map((oneGame: JSONObject, idx: number) => {
+      const utcTimeStamp: string = oneGame.status;
+      const [localDayAndTime, localDate] = handleGameDateAndTime(utcTimeStamp)
+      const homeGame: boolean = activeTeam.id === oneGame.home_team.id; 
 
       return (
         <div key={idx} className="small-game-card">
-          <h4>{oneGame.home_team.city}</h4>
-          <h3>{oneGame.home_team.name}</h3>
-          <p>vs</p>
-          <h4>{oneGame.visitor_team.city}</h4>
-          <h3>{oneGame.visitor_team.name}</h3>
+          <h4>{homeGame ? "vs" : "at"}</h4>
+          <h3>{homeGame ? oneGame.visitor_team.city : oneGame.home_team.city }</h3>
           <br></br>
-          <p className="datetime">{realGameTime.toDateString()}</p>
-          <p className="datetime">{oneGame.status}</p>
+          <p className="datetime">{localDayAndTime}</p>
+          <p className="datetime">{localDate}</p>
+
         </div>
       );
     });
