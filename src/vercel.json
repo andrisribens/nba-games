@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/sample-page/:asset*",
-      "destination": "https://sample-responsive-webpage.vercel.app/:asset*"
+      "destination": "https://nba-games-pi.vercel.app/:asset*"
     },
     { "source": "/(.*)", "destination": "/" }
   ]
