@@ -42,10 +42,16 @@ const App: React.FC = () => {
   }
 
   // interface JSONArray extends Array<JSONValue> {}
+  
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   const fetchTeamData = () => {
     return axios
-      .get('https://www.balldontlie.io/api/v1/teams') 
+      .get('https://www.balldontlie.io/api/v1/teams', {
+        headers: {
+          'Authorization': apiKey,
+        },
+      })
       .then(function (response) {
         const teams: TeamObject[] = response.data.data;
         return teams;
@@ -54,14 +60,19 @@ const App: React.FC = () => {
         console.log(error);
       });
   };
-
-  const fetchGameData = (newActiveTeam: TeamObject) => {
+  
+  const fetchGameData = (newActiveTeam: TeamObject, currentDateString: string) => {
     return axios
       .get(
         'https://www.balldontlie.io/api/v1/games?seasons[]=2023&team_ids[]=' +
           newActiveTeam.id +
           '&start_date=' +
-          currentDateString
+          currentDateString,
+        {
+          headers: {
+            'Authorization': apiKey,
+          },
+        }
       )
       .then(function (response) {
         const games: JSONObject[] = response.data.data;
@@ -73,6 +84,7 @@ const App: React.FC = () => {
         console.log(error);
       });
   };
+
 
   const [teams, setTeams] = useState<Array<TeamObject>>([]);
   const [activeTeam, setActiveTeam] = useState<TeamObject>({
