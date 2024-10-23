@@ -64,7 +64,7 @@ const App: React.FC = () => {
   const fetchGameData = (newActiveTeam: TeamObject) => {
     return axios
       .get(
-        'https://www.balldontlie.io/api/v1/games?seasons[]=2023&team_ids[]=' +
+        'https://www.balldontlie.io/api/v1/games?seasons[]=2024&team_ids[]=' +
           newActiveTeam.id +
           '&start_date=' +
           currentDateString,
